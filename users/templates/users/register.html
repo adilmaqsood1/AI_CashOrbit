@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - AI CashOrbit{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-[#F4F6F8] py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-md border-t-4 border-[#2ECC71]">
+    <div class="text-center">
+      <h2 class="mt-2 text-center text-3xl font-extrabold text-[#1C1F26]">
+        Create your account
+      </h2>
+      <p class="mt-2 text-center text-sm text-[#6C757D]">
+        Join AI CashOrbit and revolutionize your financial management
+      </p>
+    </div>
+    
+    {% if messages %}
+      {% for message in messages %}
+        <div class="{% if message.tags == 'error' %}bg-red-100 border-l-4 border-red-500 text-red-700{% else %}bg-[#A0F0BC] border-l-4 border-[#2ECC71] text-[#1C1F26]{% endif %} p-4 rounded-md shadow-sm relative" role="alert">
+          <div class="flex items-center">
+            <div class="py-1">
+              <svg class="{% if message.tags == 'error' %}text-red-500{% else %}text-[#2ECC71]{% endif %} mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{% if message.tags == 'error' %}M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z{% else %}M5 13l4 4L19 7{% endif %}" />
+              </svg>
+            </div>
+            <span class="block sm:inline font-medium">{{ message }}</span>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+    
+    <form class="mt-6 space-y-6" action="{% url 'register' %}" method="POST">
+      {% csrf_token %}
+      <div class="space-y-5">
+        {% load widget_tweaks %}
+        
+        <div class="form-group">
+          <label for="id_username" class="block text-sm font-medium text-[#1C1F26]">Username</label>
+          {% render_field form.username class="mt-1 block w-full px-3 py-2 bg-white border border-[#6C757D] rounded-md shadow-sm focus:outline-none focus:ring-[#2ECC71] focus:border-[#2ECC71]" placeholder="Choose a username" %}
+          {% if form.username.errors %}
+            <p class="mt-1 text-red-500 text-xs flex items-center"><svg class="h-3 w-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>{{ form.username.errors.0 }}</p>
+          {% endif %}
+        </div>
+        
+        <div class="form-group">
+          <label for="id_email" class="block text-sm font-medium text-[#1C1F26]">Email</label>
+          {% render_field form.email class="mt-1 block w-full px-3 py-2 bg-white border border-[#6C757D] rounded-md shadow-sm focus:outline-none focus:ring-[#2ECC71] focus:border-[#2ECC71]" placeholder="your@email.com" %}
+          {% if form.email.errors %}
+            <p class="mt-1 text-red-500 text-xs flex items-center"><svg class="h-3 w-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>{{ form.email.errors.0 }}</p>
+          {% endif %}
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="form-group">
+            <label for="id_first_name" class="block text-sm font-medium text-[#1C1F26]">First Name</label>
+            {% render_field form.first_name class="mt-1 block w-full px-3 py-2 bg-white border border-[#6C757D] rounded-md shadow-sm focus:outline-none focus:ring-[#2ECC71] focus:border-[#2ECC71]" placeholder="First name" %}
+            {% if form.first_name.errors %}
+              <p class="mt-1 text-red-500 text-xs flex items-center"><svg class="h-3 w-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>{{ form.first_name.errors.0 }}</p>
+            {% endif %}
+          </div>
+          
+          <div class="form-group">
+            <label for="id_last_name" class="block text-sm font-medium text-[#1C1F26]">Last Name</label>
+            {% render_field form.last_name class="mt-1 block w-full px-3 py-2 bg-white border border-[#6C757D] rounded-md shadow-sm focus:outline-none focus:ring-[#2ECC71] focus:border-[#2ECC71]" placeholder="Last name" %}
+            {% if form.last_name.errors %}
+              <p class="mt-1 text-red-500 text-xs flex items-center"><svg class="h-3 w-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>{{ form.last_name.errors.0 }}</p>
+            {% endif %}
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="id_password1" class="block text-sm font-medium text-[#1C1F26]">Password</label>
+          {% render_field form.password1 class="mt-1 block w-full px-3 py-2 bg-white border border-[#6C757D] rounded-md shadow-sm focus:outline-none focus:ring-[#2ECC71] focus:border-[#2ECC71]" placeholder="Create a strong password" %}
+          {% if form.password1.errors %}
+            <p class="mt-1 text-red-500 text-xs flex items-center"><svg class="h-3 w-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>{{ form.password1.errors.0 }}</p>
+          {% endif %}
+          <p class="mt-1 text-xs text-[#6C757D]">Use at least 8 characters with letters, numbers, and symbols</p>
+        </div>
+        
+        <div class="form-group">
+          <label for="id_password2" class="block text-sm font-medium text-[#1C1F26]">Confirm Password</label>
+          {% render_field form.password2 class="mt-1 block w-full px-3 py-2 bg-white border border-[#6C757D] rounded-md shadow-sm focus:outline-none focus:ring-[#2ECC71] focus:border-[#2ECC71]" placeholder="Confirm your password" %}
+          {% if form.password2.errors %}
+            <p class="mt-1 text-red-500 text-xs flex items-center"><svg class="h-3 w-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>{{ form.password2.errors.0 }}</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#2ECC71] hover:bg-[#2ECC71]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2ECC71] transition-all duration-200 shadow-md hover:shadow-lg">
+          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+            <svg class="h-5 w-5 text-[#A0F0BC] group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            </svg>
+          </span>
+          Create Account
+        </button>
+      </div>
+      
+      <div class="mt-4 text-sm text-center">
+        <p class="text-[#6C757D]">
+          Already have an account? 
+          <a href="{% url 'login' %}" class="font-medium text-[#2ECC71] hover:text-[#2ECC71]/80 transition-colors duration-200">
+            Sign in
+          </a>
+        </p>
+      </div>
+      
+      <div class="mt-6 border-t border-[#6C757D]/20 pt-4">
+        <p class="text-xs text-center text-[#6C757D]">
+          By creating an account, you agree to our 
+          <a href="#" class="text-[#2ECC71] hover:underline">Terms of Service</a> and 
+          <a href="#" class="text-[#2ECC71] hover:underline">Privacy Policy</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

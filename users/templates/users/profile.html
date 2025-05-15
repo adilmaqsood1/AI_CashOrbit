@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="py-10 bg-[#F4F6F8]">
+  <header>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold leading-tight text-[#6C757D]">Profile</h1>
+    </div>
+  </header>
+  <main>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div class="px-4 py-8 sm:px-0">
+        <div class="bg-white shadow-md overflow-hidden sm:rounded-lg">
+          <div class="px-4 py-5 sm:px-6 bg-[#1C1F26]">
+            <h3 class="text-lg leading-6 font-medium text-white">User Information</h3>
+            <p class="mt-1 max-w-2xl text-sm text-[#F4F6F8]">Personal details and account settings.</p>
+          </div>
+          
+          {% if messages %}
+            {% for message in messages %}
+              <div class="{% if message.tags == 'error' %}bg-red-100 border border-red-400 text-red-700{% else %}bg-[#A0F0BC] border border-[#2ECC71] text-[#1C1F26]{% endif %} px-4 py-3 rounded relative" role="alert">
+                <span class="block sm:inline">{{ message }}</span>
+              </div>
+            {% endfor %}
+          {% endif %}
+          
+          <div class="border-t border-gray-200">
+            <dl>
+              <div class="bg-[#F4F6F8] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-[#6C757D]">Full name</dt>
+                <dd class="mt-1 text-sm text-[#6C757D] sm:mt-0 sm:col-span-2">{{ user_profile.first_name }} {{ user_profile.last_name }}</dd>
+              </div>
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-[#6C757D]">Username</dt>
+                <dd class="mt-1 text-sm text-[#6C757D] sm:mt-0 sm:col-span-2">{{ user_profile.username }}</dd>
+              </div>
+              <div class="bg-[#F4F6F8] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-[#6C757D]">Email address</dt>
+                <dd class="mt-1 text-sm text-[#6C757D] sm:mt-0 sm:col-span-2">{{ user_profile.email }}</dd>
+              </div>
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-[#6C757D]">Date joined</dt>
+                <dd class="mt-1 text-sm text-[#6C757D] sm:mt-0 sm:col-span-2">{{ user_profile.date_joined|date:"F j, Y" }}</dd>
+              </div>
+              <div class="bg-[#F4F6F8] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-[#6C757D]">Last login</dt>
+                <dd class="mt-1 text-sm text-[#6C757D] sm:mt-0 sm:col-span-2">{{ user_profile.last_login|date:"F j, Y H:i" }}</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        
+        <div class="mt-6 flex justify-end">
+          <a href="{% url 'profile_update' %}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#2ECC71] hover:bg-[#2ECC71]/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2ECC71]">
+            Update Profile
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

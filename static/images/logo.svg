@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <style>
+    .logo-text { font-family: Arial, sans-serif; font-weight: bold; }
+    .primary { fill: #ffffff; }
+    .accent { fill: #93c5fd; }
+  </style>
+  <g>
+    <circle cx="25" cy="25" r="20" fill="#4f46e5" />
+    <path d="M25 10 L35 25 L25 40 L15 25 Z" class="accent" />
+    <circle cx="25" cy="25" r="5" class="accent" />
+    <text x="55" y="32" class="logo-text primary" font-size="20">CashOrbit</text>
+    <text x="55" y="20" class="logo-text accent" font-size="12">AI</text>
+  </g>
+</svg>

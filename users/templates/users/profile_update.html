@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Profile{% endblock %}
+
+{% block content %}
+<div class="py-10 bg-[#F4F6F8]">
+  <header>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold leading-tight text-[#6C757D]">Update Profile</h1>
+    </div>
+  </header>
+  <main>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div class="px-4 py-8 sm:px-0">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+          <div class="px-4 py-5 sm:px-6 bg-[#1C1F26]">
+            <h3 class="text-lg leading-6 font-medium text-white">Edit Your Information</h3>
+            <p class="mt-1 max-w-2xl text-sm text-[#F4F6F8]">Update your personal details.</p>
+          </div>
+          
+          {% if messages %}
+            {% for message in messages %}
+              <div class="{% if message.tags == 'error' %}bg-red-100 border border-red-400 text-red-700{% else %}bg-[#A0F0BC] border border-[#2ECC71] text-[#1C1F26]{% endif %} px-4 py-3 rounded relative" role="alert">
+                <span class="block sm:inline">{{ message }}</span>
+              </div>
+            {% endfor %}
+          {% endif %}
+          
+          <div class="mt-5 md:mt-0 md:col-span-2">
+            <form action="{% url 'profile_update' %}" method="POST">
+              {% csrf_token %}
+              <div class="shadow overflow-hidden sm:rounded-md">
+                <div class="px-4 py-5 bg-white sm:p-6">
+                  <div class="grid grid-cols-6 gap-6">
+                    <div class="col-span-6 sm:col-span-3">
+                      <label for="id_first_name" class="block text-sm font-medium text-gray-700">First name</label>
+                      {{ form.first_name }}
+                      {% if form.first_name.errors %}
+                        <p class="text-red-500 text-xs italic">{{ form.first_name.errors.0 }}</p>
+                      {% endif %}
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-3">
+                      <label for="id_last_name" class="block text-sm font-medium text-gray-700">Last name</label>
+                      {{ form.last_name }}
+                      {% if form.last_name.errors %}
+                        <p class="text-red-500 text-xs italic">{{ form.last_name.errors.0 }}</p>
+                      {% endif %}
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-4">
+                      <label for="id_email" class="block text-sm font-medium text-gray-700">Email address</label>
+                      {{ form.email }}
+                      {% if form.email.errors %}
+                        <p class="text-red-500 text-xs italic">{{ form.email.errors.0 }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                  <a href="{% url 'profile' %}" class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2">
+                    Cancel
+                  </a>
+                  <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Save
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}
