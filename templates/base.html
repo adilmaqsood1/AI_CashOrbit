@@ -198,16 +198,42 @@
                         </div>
                         {% else %}
                         <div class="flex items-center space-x-4">
-                            <a href="#features" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Features</a>
-                            <a href="#" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Plans & Pricing</a>
-                            <a href="#" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Partner With Us</a>
-                            <a href="#" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Resources</a>
-                            <a href="{% url 'login' %}" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Login</a>
-                            <a href="{% url 'register' %}" class="bg-[#2ECC71] hover:bg-[#2ECC71]/90 text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg">Free Trial</a>
-                        </div>
-                        {% endif %}
-                    </div>
+                            <!-- In the desktop menu section (for non-authenticated users) -->
+<div class="hidden lg:block ml-10">
+    <div class="flex items-baseline space-x-4">
+        <!-- ... other nav items ... -->
+        <div class="relative group">
+            
+                
+                <a href="{% url 'features' %}" class="text-white">Features</a>
+            
+            <div class="absolute left-0  w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="py-1 grid grid-cols-1 gap-1">
+                    <a href="{% url "feature_advanced_user_rights" %}" class="block px-4 py-2 text-sm text-[#1C1F26] hover:bg-[#A0F0BC]/20 hover:text-[#2ECC71]">Advanced User Rights</a>
+                    <a href="{% url "feature_assembly" %}" class="block px-4 py-2 text-sm text-[#1C1F26] hover:bg-[#A0F0BC]/20 hover:text-[#2ECC71]">Assembly</a>
+                    <a href="{% url "feature_ai_insights" %}" class="block px-4 py-2 text-sm text-[#1C1F26] hover:bg-[#A0F0BC]/20 hover:text-[#2ECC71]">AI-Insights</a>
+                    <a href="{% url "feature_batch_expiry" %}" class="block px-4 py-2 text-sm text-[#1C1F26] hover:bg-[#A0F0BC]/20 hover:text-[#2ECC71]">Batch & Expiry</a>
+                    <a href="{% url "feature_backups_security" %}" class="block px-4 py-2 text-sm text-[#1C1F26] hover:bg-[#A0F0BC]/20 hover:text-[#2ECC71]">Backups & Security</a>
+                    <a href="{% url "feature_business_analysis" %}" class="block px-4 py-2 text-sm text-[#1C1F26] hover:bg-[#A0F0BC]/20 hover:text-[#2ECC71]">Business Analysis & Reports</a>
+                    <a href="{% url "feature_cloud" %}" class="block px-4 py-2 text-sm text-[#1C1F26] hover:bg-[#A0F0BC]/20 hover:text-[#2ECC71]">Cloud Storage</a>
+                    <a href="{% url "feature_easy_setup" %}" class="block px-4 py-2 text-sm text-[#1C1F26] hover:bg-[#A0F0BC]/20 hover:text-[#2ECC71]">Easy Setup</a>
+                    <a href="{% url "feature_tax" %}" class="block px-4 py-2 text-sm text-[#1C1F26] hover:bg-[#A0F0BC]/20 hover:text-[#2ECC71]">GST, VAT & Withholding Tax</a>
+                    <a href="{% url "feature_inventory" %}" class="block px-4 py-2 text-sm text-[#1C1F26] hover:bg-[#A0F0BC]/20 hover:text-[#2ECC71]">Inventory</a>
+                    <a href="{% url "feature_multi_currency" %}" class="block px-4 py-2 text-sm text-[#1C1F26] hover:bg-[#A0F0BC]/20 hover:text-[#2ECC71]">Multi-Currency</a>
+                    <a href="{% url "feature_purchases" %}" class="block px-4 py-2 text-sm text-[#1C1F26] hover:bg-[#A0F0BC]/20 hover:text-[#2ECC71]">Purchases</a>
+                    <a href="{% url "feature_sales" %}" class="block px-4 py-2 text-sm text-[#1C1F26] hover:bg-[#A0F0BC]/20 hover:text-[#2ECC71]">Sales</a>
                 </div>
+            </div>
+        </div>
+            <a href="#" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Plans & Pricing</a>
+            <a href="#" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Partner With Us</a>
+            <a href="#" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Resources</a>
+            <a href="{% url 'login' %}" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Login</a>
+            <a href="{% url 'register' %}" class="bg-[#2ECC71] hover:bg-[#2ECC71]/90 text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg">Free Trial</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
                 
                 <!-- Mobile menu button -->
                 <div class="lg:hidden flex items-center">

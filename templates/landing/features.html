@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+
+{% block title %}AI CashOrbit - Features{% endblock %}
+
+{% block content %}
+<div class="bg-[#F4F6F8] min-h-screen pt-24 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header section -->
+        <div class="text-center mb-16">
+            <h1 class="text-4xl font-extrabold text-[#1C1F26] sm:text-5xl sm:tracking-tight lg:text-6xl">Powerful <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#2ECC71] to-[#A0F0BC]">Features</span></h1>
+            <p class="mt-5 max-w-xl mx-auto text-xl text-[#6C757D]">Discover all the powerful features that make AI CashOrbit the perfect accounting solution for your business.</p>
+        </div>
+        
+        <!-- Features grid -->
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Advanced User Rights -->
+            <a href="{% url 'feature_advanced_user_rights' %}" class="group relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/30 overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-[#A0F0BC]/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-all duration-300"></div>
+                <div class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-[#1C1F26] to-[#2C3E50] text-white shadow-lg mb-6">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#1C1F26] group-hover:text-[#2ECC71] transition-colors duration-200">Advanced User Rights</h3>
+                <p class="mt-4 text-[#6C757D] leading-relaxed">Control who can access what in your business. Set permissions for users based on their role in your organization.</p>
+                <div class="mt-6 flex items-center text-[#2ECC71] font-medium">
+                    <span>Learn more</span>
+                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Assembly -->
+            <a href="{% url 'feature_assembly' %}" class="group relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/30 overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-[#A0F0BC]/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-all duration-300"></div>
+                <div class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-[#1C1F26] to-[#2C3E50] text-white shadow-lg mb-6">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#1C1F26] group-hover:text-[#2ECC71] transition-colors duration-200">Assembly</h3>
+                <p class="mt-4 text-[#6C757D] leading-relaxed">For businesses that create products from components. Track the assembly of materials into finished products and manage your production process.</p>
+                <div class="mt-6 flex items-center text-[#2ECC71] font-medium">
+                    <span>Learn more</span>
+                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Batch & Expiry -->
+            <a href="{% url 'feature_batch_expiry' %}" class="group relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/30 overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-[#A0F0BC]/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-all duration-300"></div>
+                <div class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-[#F5B041] to-[#F39C12] text-white shadow-lg mb-6">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#1C1F26] group-hover:text-[#2ECC71] transition-colors duration-200">Batch & Expiry</h3>
+                <p class="mt-4 text-[#6C757D] leading-relaxed">Track batches and expiry dates for your inventory items. Essential for businesses dealing with perishable goods or regulated products.</p>
+                <div class="mt-6 flex items-center text-[#2ECC71] font-medium">
+                    <span>Learn more</span>
+                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Backups & Security -->
+            <a href="{% url 'feature_backups_security' %}" class="group relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/30 overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-[#A0F0BC]/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-all duration-300"></div>
+                <div class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-[#1C1F26] to-[#2C3E50] text-white shadow-lg mb-6">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#1C1F26] group-hover:text-[#2ECC71] transition-colors duration-200">Backups & Security</h3>
+                <p class="mt-4 text-[#6C757D] leading-relaxed">Enterprise-grade security with automated backups to keep your financial data safe and protected at all times.</p>
+                <div class="mt-6 flex items-center text-[#2ECC71] font-medium">
+                    <span>Learn more</span>
+                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Business Analysis & Reports -->
+            <a href="{% url 'feature_business_analysis' %}" class="group relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/30 overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-[#A0F0BC]/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-all duration-300"></div>
+                <div class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-[#3949AB] to-[#303F9F] text-white shadow-lg mb-6">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#1C1F26] group-hover:text-[#2ECC71] transition-colors duration-200">Business Analysis & Reports</h3>
+                <p class="mt-4 text-[#6C757D] leading-relaxed">Gain valuable insights with comprehensive reports and business analysis tools to make informed decisions.</p>
+                <div class="mt-6 flex items-center text-[#2ECC71] font-medium">
+                    <span>Learn more</span>
+                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Cloud is the Future -->
+            <a href="{% url 'feature_cloud' %}" class="group relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/30 overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-[#A0F0BC]/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-all duration-300"></div>
+                <div class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-[#3949AB] to-[#303F9F] text-white shadow-lg mb-6">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#1C1F26] group-hover:text-[#2ECC71] transition-colors duration-200">Cloud is the Future</h3>
+                <p class="mt-4 text-[#6C757D] leading-relaxed">Our system is set to move to cloud technology in the future, ensuring your data is accessible anywhere, anytime.</p>
+                <div class="mt-6 flex items-center text-[#2ECC71] font-medium">
+                    <span>Learn more</span>
+                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Easy Setup -->
+            <a href="{% url 'feature_easy_setup' %}" class="group relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/30 overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-[#A0F0BC]/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-all duration-300"></div>
+                <div class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-[#2ECC71] to-[#27AE60] text-white shadow-lg mb-6">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#1C1F26] group-hover:text-[#2ECC71] transition-colors duration-200">Easy Setup</h3>
+                <p class="mt-4 text-[#6C757D] leading-relaxed">Get started quickly with our intuitive setup process. Import your data and be up and running in minutes.</p>
+                <div class="mt-6 flex items-center text-[#2ECC71] font-medium">
+                    <span>Learn more</span>
+                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- GST, VAT & Withholding Tax -->
+            <a href="{% url 'feature_tax' %}" class="group relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/30 overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-[#A0F0BC]/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-all duration-300"></div>
+                <div class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-[#3949AB] to-[#303F9F] text-white shadow-lg mb-6">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2zM10 8.5a.5.5 0 11-1 0 .5.5 0 011 0zm5 5a.5.5 0 11-1 0 .5.5 0 011 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#1C1F26] group-hover:text-[#2ECC71] transition-colors duration-200">GST, VAT & Withholding Tax</h3>
+                <p class="mt-4 text-[#6C757D] leading-relaxed">Professionally calculate all types of taxes including GST/VAT, withholding tax, and more. Ensure compliance with tax regulations.</p>
+                <div class="mt-6 flex items-center text-[#2ECC71] font-medium">
+                    <span>Learn more</span>
+                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Inventory -->
+            <a href="{% url 'feature_inventory' %}" class="group relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/30 overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-[#F5B041]/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-all duration-300"></div>
+                <div class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-[#F5B041] to-[#F39C12] text-white shadow-lg mb-6">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#1C1F26] group-hover:text-[#F5B041] transition-colors duration-200">Inventory</h3>
+                <p class="mt-4 text-[#6C757D] leading-relaxed">Manage stock levels and monitor inventory. Keep track of what items you have in stock, what's running low and what needs to be reordered.</p>
+                <div class="mt-6 flex items-center text-[#F5B041] font-medium">
+                    <span>Learn more</span>
+                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Multi-Currency -->
+            <a href="{% url 'feature_multi_currency' %}" class="group relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/30 overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-[#A0F0BC]/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-all duration-300"></div>
+                <div class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-[#3949AB] to-[#303F9F] text-white shadow-lg mb-6">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#1C1F26] group-hover:text-[#2ECC71] transition-colors duration-200">Multi-Currency</h3>
+                <p class="mt-4 text-[#6C757D] leading-relaxed">Trade with clients and suppliers from around the world. Handle multiple currencies with automatic exchange rate updates for accurate accounting.</p>
+                <div class="mt-6 flex items-center text-[#2ECC71] font-medium">
+                    <span>Learn more</span>
+                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Purchases -->
+            <a href="{% url 'feature_purchases' %}" class="group relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/30 overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-[#3949AB]/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-all duration-300"></div>
+                <div class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-[#3949AB] to-[#303F9F] text-white shadow-lg mb-6">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#1C1F26] group-hover:text-[#3949AB] transition-colors duration-200">
+
+                    Purchases</h3>
+                <p class="mt-4 text-[#6C757D] leading-relaxed">Keep track of all your purchases. Record details such as supplier, date, and quantity.</p>
+                <div class="mt-6 flex items-center text-[#3949AB] font-medium">
+                    <span>Learn more</span>
+                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" xmlns="                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" xmlns="URL_ADDRESS.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </div>
+
+            <!-- AI-Insights-->
+            <a href="{% url 'feature_ai_insights' %}" class="group relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/30 overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-[#A0F0BC]/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-5 group-hover:-translate-y-5 transition-all duration-300"></div>
+                <div class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-[#2ECC71] to-[#27AE60] text-white shadow-lg mb-6">
+                    <svg class="w-7 h-7" xmlns= <svg class="w-7 h-7" xmlns="URL_ADDRESS.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#1C1F26] group-hover:text-[#2ECC71] transition-colors duration-200">AI-Insights</h3>
+                <p class="mt-4 text-[#6C757D] leading-relaxed">Get valuable insights from our AI-powered features. Analyze your data and gain a deeper understanding of your business.</p>
+                <div class="mt-6 flex items-center text-[#2ECC71] font-medium">
+                    <span>Learn more</span>
+                    <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" xmlns="
+                    <span>Learn more</span>
+
+{% block footer %} {% endblock %}
+{% endblock %}

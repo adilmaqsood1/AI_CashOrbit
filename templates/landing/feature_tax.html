@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Tax Management - AI CashOrbit{% endblock %}
+
+{% block content %}
+<div class="bg-[#F4F6F8] min-h-screen pt-24 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-[#1C1F26] sm:text-5xl sm:tracking-tight"><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#2ECC71] to-[#A0F0BC]">Tax</span> Management</h1>
+            <p class="mt-5 max-w-xl mx-auto text-xl text-[#6C757D]">Simplify your tax, VAT, and withholding tax processes with automated calculations and compliance tools.</p>
+        </div>
+        
+        <!-- Feature content -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+            <div class="grid grid-cols-1 lg:grid-cols-5">
+                <div class="lg:col-span-3 p-8 lg:p-12">
+                    <h2 class="text-3xl font-bold text-[#1C1F26] mb-6">Automate Your Tax Compliance</h2>
+                    <p class="text-lg text-[#6C757D] mb-6">AI CashOrbit streamlines your tax management by automating VAT, GST, and withholding tax calculations. Stay compliant with local regulations, generate accurate reports, and reduce manual errors.</p>
+                    <h3 class="text-xl font-semibold text-[#1C1F26] mt-8 mb-4">Key Benefits</h3>
+                    <ul class="space-y-3 text-[#6C757D]">
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-[#2ECC71] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            <span>Automated VAT, GST, and withholding tax calculations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-[#2ECC71] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            <span>Easy configuration of tax rates and rules for different jurisdictions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-[#2ECC71] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            <span>Generate tax reports for filing and audit purposes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-[#2ECC71] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            <span>Reduce manual errors and ensure compliance</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-2 bg-gradient-to-br from-[#1C1F26] to-[#2C3E50] p-8 lg:p-12 flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="flex items-center justify-center w-24 h-24 mx-auto rounded-full bg-white/10 text-white mb-6">
+                            <img src="/static/images/tax_management.svg" alt="Tax Management Illustration" class="w-12 h-12 mx-auto" />
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Accurate & Compliant</h3>
+                        <p class="text-white/80">Effortlessly manage all your business taxes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- CTA section -->
+        <div class="bg-gradient-to-r from-[#2ECC71] to-[#27AE60] rounded-xl p-8 md:p-12 shadow-xl">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-white mb-6">Ready to simplify your tax management?</h2>
+                <p class="text-xl text-white/80 mb-8">Start using AI CashOrbit for stress-free tax compliance and reporting.</p>
+                <a href="/signup/" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-[#1C1F26] bg-[#A0F0BC] hover:bg-[#2ECC71] transition-colors duration-300">
+                    Start Managing Taxes Now
+                    <svg class="ml-2 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
