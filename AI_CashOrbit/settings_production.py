@@ -8,6 +8,10 @@ from .settings import *
 # Override base settings for production
 DEBUG = False
 
+SECRET_KEY = 'django-insecure-h*ux4_nqet!-^w4!uewv+mw-8c+9pke^zus67(ol)0w!^+tsg9'
+
+ALLOWED_HOSTS = ['*', '.railway.app']
+
 # Security settings
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
@@ -18,9 +22,6 @@ SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
-
-# Ensure ALLOWED_HOSTS is set from environment variable
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',') if os.environ.get('ALLOWED_HOSTS') else ['*', '.railway.app']
 
 # Configure logging
 LOGGING = {
