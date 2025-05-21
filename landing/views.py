@@ -1,10 +1,20 @@
 from django.views.generic import TemplateView
+from django.views.generic.list import ListView
+from .models import PricingPlan
 
 class LandingPageView(TemplateView):
     template_name = 'landing/home.html'
 
 class FeaturesPageView(TemplateView):
     template_name = 'landing/features.html'
+    
+class PlansPricingView(ListView):
+    model = PricingPlan
+    template_name = 'landing/plans_pricing.html'
+    context_object_name = 'plans'
+    
+class ResourcesView(TemplateView):
+    template_name = 'landing/resources.html'
 
 class FeatureAdvancedUserRightsView(TemplateView):
     template_name = 'landing/feature_advanced_user_rights.html'
@@ -45,3 +55,7 @@ class FeatureSalesView(TemplateView):
 
 class FeatureAIInsightsView(TemplateView):
     template_name = 'landing/feature_ai_insights.html'
+
+
+class PartnerWithUsView(TemplateView):
+    template_name = 'landing/partner_with_us.html'

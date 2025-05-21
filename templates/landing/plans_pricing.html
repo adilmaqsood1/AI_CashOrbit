@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block title %}AI CashOrbit - Plans & Pricing{% endblock %}
+
+{% block content %}
+<div class="bg-[#F4F6F8] min-h-screen pt-24 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header section -->
+        <div class="text-center mb-16">
+            <h1 class="text-4xl font-extrabold text-[#1C1F26] sm:text-5xl sm:tracking-tight lg:text-6xl">Simple <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#2ECC71] to-[#A0F0BC]">Pricing</span></h1>
+            <p class="mt-5 max-w-xl mx-auto text-xl text-[#6C757D]">Choose the perfect plan for your business needs with our transparent pricing options.</p>
+        </div>
+        
+        <!-- Pricing toggle -->
+        <div class="flex justify-center mb-12">
+            <div class="bg-white rounded-full p-1 inline-flex shadow-md">
+                <button id="monthly-btn" class="px-6 py-2 rounded-full bg-[#2ECC71] text-white font-medium focus:outline-none transition-all duration-200">Monthly</button>
+                <button id="annually-btn" class="px-6 py-2 rounded-full text-[#1C1F26] font-medium focus:outline-none transition-all duration-200">Annually</button>
+            </div>
+        </div>
+        
+        <!-- Pricing cards -->
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
+            {% for plan in plans %}
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg border {% if plan.is_popular %}border-[#2ECC71] ring-2 ring-[#2ECC71]/20{% else %}border-gray-100{% endif %} transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-1">
+                {% if plan.is_popular %}
+                <div class="bg-[#2ECC71] text-white text-center py-2 font-medium">Most Popular</div>
+                {% endif %}
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-[#1C1F26]">{{ plan.name }}</h3>
+                    <p class="mt-4 text-[#6C757D]">{{ plan.description }}</p>
+                    
+                    <div class="mt-6 mb-8">
+                        <div class="flex items-end">
+                            <span class="text-4xl font-bold text-[#1C1F26]">${{ plan.price }}</span>
+                            <span class="text-[#6C757D] ml-2">/ {{ plan.get_billing_cycle_display }}</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        {% for feature in plan.features.all %}
+                        <li class="flex items-start">
+                            {% if feature.is_included %}
+                            <svg class="h-5 w-5 text-[#2ECC71] mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            {% else %}
+                            <svg class="h-5 w-5 text-[#6C757D] mt-0.5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                            {% endif %}
+                            <span class="text-[#6C757D]">{{ feature.feature }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    
+                    <a href="{% url 'register' %}" class="block w-full py-3 px-4 text-center rounded-lg {% if plan.is_popular %}bg-[#2ECC71] text-white hover:bg-[#2ECC71]/90{% else %}bg-[#F4F6F8] text-[#1C1F26] hover:bg-[#E9ECEF]{% endif %} font-medium transition-all duration-200 shadow-sm hover:shadow">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-span-3 text-center py-12">
+                <p class="text-[#6C757D] text-lg">No pricing plans available at the moment. Please check back later.</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- FAQ section -->
+        <div class="mt-20">
+            <h2 class="text-3xl font-bold text-center text-[#1C1F26] mb-12">Frequently Asked Questions</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold text-[#1C1F26] mb-3">Can I change my plan later?</h3>
+                    <p class="text-[#6C757D]">Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold text-[#1C1F26] mb-3">Is there a free trial?</h3>
+                    <p class="text-[#6C757D]">Yes, we offer a 14-day free trial on all plans. No credit card required to start your trial.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold text-[#1C1F26] mb-3">What payment methods do you accept?</h3>
+                    <p class="text-[#6C757D]">We accept all major credit cards, PayPal, and bank transfers for annual plans.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold text-[#1C1F26] mb-3">Can I cancel my subscription?</h3>
+                    <p class="text-[#6C757D]">Yes, you can cancel your subscription at any time from your account settings. No long-term contracts or cancellation fees.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA section -->
+        <div class="mt-20 bg-gradient-to-r from-[#1C1F26] to-[#2C3E50] rounded-2xl p-8 md:p-12 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Ready to get started with AI CashOrbit?</h2>
+            <p class="text-lg text-[#F4F6F8]/80 mb-8 max-w-2xl mx-auto">Join thousands of businesses that trust AI CashOrbit for their accounting needs.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="{% url 'register' %}" class="px-8 py-3 bg-[#2ECC71] text-white font-medium rounded-lg shadow-lg hover:bg-[#2ECC71]/90 transition-all duration-200">Start Free Trial</a>
+                <a href="#" class="px-8 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all duration-200">Contact Sales</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pricing toggle script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const monthlyBtn = document.getElementById('monthly-btn');
+        const annuallyBtn = document.getElementById('annually-btn');
+        
+        monthlyBtn.addEventListener('click', function() {
+            monthlyBtn.classList.add('bg-[#2ECC71]', 'text-white');
+            monthlyBtn.classList.remove('text-[#1C1F26]');
+            annuallyBtn.classList.remove('bg-[#2ECC71]', 'text-white');
+            annuallyBtn.classList.add('text-[#1C1F26]');
+            // Here you would update prices to show monthly rates
+            // This would require AJAX or page reload with a parameter
+        });
+        
+        annuallyBtn.addEventListener('click', function() {
+            annuallyBtn.classList.add('bg-[#2ECC71]', 'text-white');
+            annuallyBtn.classList.remove('text-[#1C1F26]');
+            monthlyBtn.classList.remove('bg-[#2ECC71]', 'text-white');
+            monthlyBtn.classList.add('text-[#1C1F26]');
+            // Here you would update prices to show annual rates
+            // This would require AJAX or page reload with a parameter
+        });
+    });
+</script>
+{% endblock %}

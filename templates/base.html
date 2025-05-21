@@ -225,9 +225,9 @@
                 </div>
             </div>
         </div>
-            <a href="#" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Plans & Pricing</a>
-            <a href="#" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Partner With Us</a>
-            <a href="#" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Resources</a>
+            <a href="{% url 'plans_pricing' %}" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Plans & Pricing</a>
+            <a href="{% url 'partner_with_us' %}" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Partner With Us</a>
+            <a href="{% url 'resources'%}" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Resources</a>
             <a href="{% url 'login' %}" class="text-white hover:text-[#2ECC71] border-b-2 border-transparent hover:border-[#2ECC71] px-3 py-2 text-sm font-medium transition-all duration-200">Login</a>
             <a href="{% url 'register' %}" class="bg-[#2ECC71] hover:bg-[#2ECC71]/90 text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg">Free Trial</a>
         </div>
@@ -275,7 +275,7 @@
                 </div>
                 {% else %}
                 <a href="#features" class="text-white hover:bg-[#2C3E50] block px-3 py-2 rounded-md text-base font-medium">Features</a>
-                <a href="#" class="text-white hover:bg-[#2C3E50] block px-3 py-2 rounded-md text-base font-medium">Plans & Pricing</a>
+                <a href="{% url 'plans_pricing' %}" class="text-white hover:bg-[#2C3E50] block px-3 py-2 rounded-md text-base font-medium">Plans & Pricing</a>
                 <a href="#" class="text-white hover:bg-[#2C3E50] block px-3 py-2 rounded-md text-base font-medium">Partner With Us</a>
                 <a href="#" class="text-white hover:bg-[#2C3E50] block px-3 py-2 rounded-md text-base font-medium">Resources</a>
                 <a href="{% url 'login' %}" class="text-white hover:bg-[#2C3E50] block px-3 py-2 rounded-md text-base font-medium">Login</a>

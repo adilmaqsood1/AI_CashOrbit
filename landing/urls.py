@@ -4,6 +4,8 @@ from . import views
 urlpatterns = [
     path('', views.LandingPageView.as_view(), name='landing'),
     path('features/', views.FeaturesPageView.as_view(), name='features'),
+    path('plans-pricing/', views.PlansPricingView.as_view(), name='plans_pricing'),
+    path('resources/', views.ResourcesView.as_view(), name='resources'),
     path('features/advanced-user-rights/', views.FeatureAdvancedUserRightsView.as_view(), name='feature_advanced_user_rights'),
     path('features/assembly/', views.FeatureAssemblyView.as_view(), name='feature_assembly'),
     path('features/batch-expiry/', views.FeatureBatchExpiryView.as_view(), name='feature_batch_expiry'),
@@ -16,5 +18,6 @@ urlpatterns = [
     path('features/multi-currency/', views.FeatureMultiCurrencyView.as_view(), name='feature_multi_currency'),
     path('features/purchases/', views.FeaturePurchasesView.as_view(), name='feature_purchases'),
     path('features/sales/', views.FeatureSalesView.as_view(), name='feature_sales'),
-    path('feature_ai_insights/', views.FeatureAIInsightsView.as_view(), name='feature_ai_insights')
+    path('feature_ai_insights/', views.FeatureAIInsightsView.as_view(), name='feature_ai_insights'),
+    path('partner-with-us/', views.PartnerWithUsView.as_view(), name='partner_with_us')
 ]

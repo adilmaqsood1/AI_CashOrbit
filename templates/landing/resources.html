@@ -1,0 +1,363 @@
+{% extends 'base.html' %}
+
+{% block title %}AI CashOrbit - Resources{% endblock %}
+
+{% block extra_css %}
+<style>
+    .aspect-w-16 {
+        position: relative;
+        padding-bottom: 56.25%;
+    }
+    .aspect-w-16 > * {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="bg-[#F4F6F8] min-h-screen pt-24 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header section -->
+        <div class="text-center mb-16">
+            <h1 class="text-4xl font-extrabold text-[#1C1F26] sm:text-5xl sm:tracking-tight lg:text-6xl">Helpful <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#2ECC71] to-[#A0F0BC]">Resources</span></h1>
+            <p class="mt-5 max-w-xl mx-auto text-xl text-[#6C757D]">Everything you need to get the most out of AI CashOrbit for your business.</p>
+        </div>
+        
+        <!-- Resources navigation -->
+        <div class="flex justify-center mb-12">
+            <div class="bg-white rounded-full p-1 inline-flex shadow-md">
+                <button id="docs-btn" class="px-6 py-2 rounded-full bg-[#2ECC71] text-white font-medium focus:outline-none transition-all duration-200">Documentation</button>
+                <button id="tutorials-btn" class="px-6 py-2 rounded-full text-[#1C1F26] font-medium focus:outline-none transition-all duration-200">Tutorials</button>
+                <button id="guides-btn" class="px-6 py-2 rounded-full text-[#1C1F26] font-medium focus:outline-none transition-all duration-200">Guides</button>
+                <button id="faqs-btn" class="px-6 py-2 rounded-full text-[#1C1F26] font-medium focus:outline-none transition-all duration-200">FAQs</button>
+            </div>
+        </div>
+        
+        <!-- Documentation section -->
+        <div id="docs-section" class="resource-section">
+            <div class="py-12 bg-white rounded-2xl shadow-xl mb-16 overflow-hidden relative">
+                <!-- Background decorative elements -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-[#A0F0BC]/10 rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#3949AB]/5 rounded-full transform translate-x-[-30%] translate-y-[30%]"></div>
+                
+                <div class="relative z-10 px-6 lg:px-12">
+                    <div class="text-center mb-12">
+                        <span class="inline-block px-4 py-1 rounded-full bg-[#A0F0BC]/20 text-[#2ECC71] text-sm font-semibold mb-4 shadow-lg shadow-[#2ECC71]/10">DOCUMENTATION</span>
+                        <h2 class="text-3xl font-extrabold text-[#1C1F26] sm:text-4xl">Official <span class="text-[#2ECC71]">Documentation</span></h2>
+                        <p class="mt-4 text-lg text-[#6C757D] max-w-3xl mx-auto">Comprehensive documentation to help you understand and use all features of AI CashOrbit</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                        <!-- Doc Item 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/40 transform hover:-translate-y-1">
+                            <div class="w-12 h-12 bg-[#2ECC71]/10 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-[#2ECC71]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1C1F26]">Getting Started</h3>
+                            <p class="mt-4 text-[#6C757D] leading-relaxed">Learn the basics of AI CashOrbit and how to set up your account for success.</p>
+                            <a href="#" class="mt-6 inline-flex items-center text-[#2ECC71] font-medium">
+                                <span>Read documentation</span>
+                                <svg class="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <!-- Doc Item 2 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/40 transform hover:-translate-y-1">
+                            <div class="w-12 h-12 bg-[#2ECC71]/10 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-[#2ECC71]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1C1F26]">API Reference</h3>
+                            <p class="mt-4 text-[#6C757D] leading-relaxed">Detailed API documentation for developers looking to integrate with AI CashOrbit.</p>
+                            <a href="#" class="mt-6 inline-flex items-center text-[#2ECC71] font-medium">
+                                <span>View API docs</span>
+                                <svg class="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <!-- Doc Item 3 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/40 transform hover:-translate-y-1">
+                            <div class="w-12 h-12 bg-[#2ECC71]/10 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-[#2ECC71]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1C1F26]">User Manual</h3>
+                            <p class="mt-4 text-[#6C757D] leading-relaxed">Complete user manual with detailed instructions for all features and functionalities.</p>
+                            <a href="#" class="mt-6 inline-flex items-center text-[#2ECC71] font-medium">
+                                <span>Download manual</span>
+                                <svg class="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tutorials section -->
+        <div id="tutorials-section" class="resource-section hidden">
+            <div class="py-12 bg-white rounded-2xl shadow-xl mb-16 overflow-hidden relative">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-[#A0F0BC]/10 rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#3949AB]/5 rounded-full transform translate-x-[-30%] translate-y-[30%]"></div>
+                
+                <div class="relative z-10 px-6 lg:px-12">
+                    <div class="text-center mb-12">
+                        <span class="inline-block px-4 py-1 rounded-full bg-[#A0F0BC]/20 text-[#2ECC71] text-sm font-semibold mb-4 shadow-lg shadow-[#2ECC71]/10">TUTORIALS</span>
+                        <h2 class="text-3xl font-extrabold text-[#1C1F26] sm:text-4xl">Step-by-Step <span class="text-[#2ECC71]">Tutorials</span></h2>
+                        <p class="mt-4 text-lg text-[#6C757D] max-w-3xl mx-auto">Learn how to use AI CashOrbit with our detailed video and written tutorials</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                        <!-- Tutorial 1 -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/40">
+                            <div class="aspect-w-16 aspect-h-9 bg-gray-200 relative">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="w-16 h-16 rounded-full bg-[#2ECC71] flex items-center justify-center cursor-pointer hover:bg-[#27ae60] transition-colors duration-200">
+                                        <svg class="w-8 h-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="Tutorial thumbnail" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-[#1C1F26]">Getting Started with AI CashOrbit</h3>
+                                <p class="mt-2 text-[#6C757D]">Learn how to set up your account, configure your business settings, and start using AI CashOrbit.</p>
+                                <div class="mt-4 flex items-center text-sm text-[#6C757D]">
+                                    <span>15 minutes</span>
+                                    <span class="mx-2">•</span>
+                                    <span>Beginner</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tutorial 2 -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/40">
+                            <div class="aspect-w-16 aspect-h-9 bg-gray-200 relative">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="w-16 h-16 rounded-full bg-[#2ECC71] flex items-center justify-center cursor-pointer hover:bg-[#27ae60] transition-colors duration-200">
+                                        <svg class="w-8 h-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="Tutorial thumbnail" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-[#1C1F26]">Advanced AI Insights</h3>
+                                <p class="mt-2 text-[#6C757D]">Discover how to leverage AI-powered insights to make better financial decisions for your business.</p>
+                                <div class="mt-4 flex items-center text-sm text-[#6C757D]">
+                                    <span>20 minutes</span>
+                                    <span class="mx-2">•</span>
+                                    <span>Intermediate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 text-center">
+                        <a href="#" class="inline-flex items-center text-[#2ECC71] font-medium">
+                            <span>View all tutorials</span>
+                            <svg class="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Guides section -->
+        <div id="guides-section" class="resource-section hidden">
+            <div class="py-12 bg-white rounded-2xl shadow-xl mb-16 overflow-hidden relative">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-[#A0F0BC]/10 rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#3949AB]/5 rounded-full transform translate-x-[-30%] translate-y-[30%]"></div>
+                
+                <div class="relative z-10 px-6 lg:px-12">
+                    <div class="text-center mb-12">
+                        <span class="inline-block px-4 py-1 rounded-full bg-[#A0F0BC]/20 text-[#2ECC71] text-sm font-semibold mb-4 shadow-lg shadow-[#2ECC71]/10">GUIDES</span>
+                        <h2 class="text-3xl font-extrabold text-[#1C1F26] sm:text-4xl">Helpful <span class="text-[#2ECC71]">Guides</span></h2>
+                        <p class="mt-4 text-lg text-[#6C757D] max-w-3xl mx-auto">In-depth guides to help you master specific features and workflows</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                        <!-- Guide 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/40 transform hover:-translate-y-1">
+                            <div class="w-12 h-12 bg-[#2ECC71]/10 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-[#2ECC71]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1C1F26]">Tax Compliance Guide</h3>
+                            <p class="mt-4 text-[#6C757D] leading-relaxed">Learn how to stay compliant with tax regulations using AI CashOrbit's tax features.</p>
+                            <a href="#" class="mt-6 inline-flex items-center text-[#2ECC71] font-medium">
+                                <span>Read guide</span>
+                                <svg class="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <!-- Guide 2 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/40 transform hover:-translate-y-1">
+                            <div class="w-12 h-12 bg-[#2ECC71]/10 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-[#2ECC71]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1C1F26]">Financial Reporting</h3>
+                            <p class="mt-4 text-[#6C757D] leading-relaxed">Master the art of creating comprehensive financial reports for stakeholders and investors.</p>
+                            <a href="#" class="mt-6 inline-flex items-center text-[#2ECC71] font-medium">
+                                <span>Read guide</span>
+                                <svg class="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <!-- Guide 3 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#2ECC71]/40 transform hover:-translate-y-1">
+                            <div class="w-12 h-12 bg-[#2ECC71]/10 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-[#2ECC71]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1C1F26]">Security Best Practices</h3>
+                            <p class="mt-4 text-[#6C757D] leading-relaxed">Learn how to keep your financial data secure with our recommended security practices.</p>
+                            <a href="#" class="mt-6 inline-flex items-center text-[#2ECC71] font-medium">
+                                <span>Read guide</span>
+                                <svg class="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQs section -->
+        <div id="faqs-section" class="resource-section hidden">
+            <div class="py-12 bg-white rounded-2xl shadow-xl mb-16 overflow-hidden relative">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-[#A0F0BC]/10 rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#3949AB]/5 rounded-full transform translate-x-[-30%] translate-y-[30%]"></div>
+                
+                <div class="relative z-10 px-6 lg:px-12">
+                    <div class="text-center mb-12">
+                        <span class="inline-block px-4 py-1 rounded-full bg-[#A0F0BC]/20 text-[#2ECC71] text-sm font-semibold mb-4 shadow-lg shadow-[#2ECC71]/10">FAQs</span>
+                        <h2 class="text-3xl font-extrabold text-[#1C1F26] sm:text-4xl">Frequently Asked <span class="text-[#2ECC71]">Questions</span></h2>
+                        <p class="mt-4 text-lg text-[#6C757D] max-w-3xl mx-auto">Find answers to common questions about AI CashOrbit</p>
+                    </div>
+                    
+                    <div class="max-w-3xl mx-auto mt-12 space-y-6">
+                        <!-- FAQ Item 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+                            <button class="flex justify-between items-center w-full text-left focus:outline-none">
+                                <h3 class="text-lg font-bold text-[#1C1F26]">How secure is my financial data with AI CashOrbit?</h3>
+                                <svg class="w-5 h-5 text-[#2ECC71]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div class="mt-4 text-[#6C757D]">
+                                <p>AI CashOrbit employs bank-level security measures including 256-bit encryption, two-factor authentication, and regular security audits. Your data is stored in secure, redundant data centers with 24/7 monitoring. We are compliant with all relevant financial data protection regulations.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 2 -->
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+                            <button class="flex justify-between items-center w-full text-left focus:outline-none">
+                                <h3 class="text-lg font-bold text-[#1C1F26]">Can I import data from my previous accounting software?</h3>
+                                <svg class="w-5 h-5 text-[#2ECC71]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div class="mt-4 text-[#6C757D]">
+                                <p>Yes, AI CashOrbit supports importing data from most popular accounting software including QuickBooks, Xero, Sage, and FreshBooks. Our data migration tool makes the process simple and secure.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all tab buttons and sections
+        const tabButtons = {
+            docs: document.getElementById('docs-btn'),
+            tutorials: document.getElementById('tutorials-btn'),
+            guides: document.getElementById('guides-btn'),
+            faqs: document.getElementById('faqs-btn')
+        };
+        
+        const sections = {
+            docs: document.getElementById('docs-section'),
+            tutorials: document.getElementById('tutorials-section'),
+            guides: document.getElementById('guides-section'),
+            faqs: document.getElementById('faqs-section')
+        };
+        
+        // Function to switch tabs
+        function switchTab(activeTab) {
+            // Hide all sections
+            Object.values(sections).forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Reset all button styles
+            Object.values(tabButtons).forEach(button => {
+                button.classList.remove('bg-[#2ECC71]', 'text-white');
+                button.classList.add('text-[#1C1F26]');
+            });
+            
+            // Show active section and style active button
+            sections[activeTab].classList.remove('hidden');
+            tabButtons[activeTab].classList.remove('text-[#1C1F26]');
+            tabButtons[activeTab].classList.add('bg-[#2ECC71]', 'text-white');
+        }
+        
+        // Add click event listeners to buttons
+        tabButtons.docs.addEventListener('click', () => switchTab('docs'));
+        tabButtons.tutorials.addEventListener('click', () => switchTab('tutorials'));
+        tabButtons.guides.addEventListener('click', () => switchTab('guides'));
+        tabButtons.faqs.addEventListener('click', () => switchTab('faqs'));
+        
+        // Initialize with docs tab active
+        switchTab('docs');
+        
+        // Add click handlers for FAQ accordions
+        const faqButtons = document.querySelectorAll('#faqs-section button');
+        faqButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                content.classList.toggle('hidden');
+                
+                // Toggle icon
+                const icon = this.querySelector('svg');
+                if (content.classList.contains('hidden')) {
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />';
+                } else {
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />';
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
