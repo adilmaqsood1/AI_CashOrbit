@@ -1,23 +1,28 @@
-# Use Python 3.10 as the base image
-FROM python:3.10-slim
+# ---- Base image ----
+FROM python:3.11-slim
 
-# Set environment variables
+# ---- Environment ----
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV DJANGO_SETTINGS_MODULE=AI_CashOrbit.settings_production
-
-# Set work directory
+    
 WORKDIR /app
-
-# Install dependencies
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy project
-COPY . /app/
-
-# Collect static files
+    
+# ---- Dependencies ----
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+    
+# ---- Project files ----
+COPY . .
+    
+# ---- Collect static (ok at build time) ----
 RUN python manage.py collectstatic --noinput
-
-# Run gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "AI_CashOrbit.wsgi:application"]
+    
+# ---- Network port for Railway ----
+EXPOSE 8000             # internal port; Railway will map $PORT→8000
+    
+    # ---- Start script ----
+    # 1. run migrations *at runtime* (now Postgres is reachable)
+    # 2. start Gunicorn on the dynamic $PORT Railway sets
+CMD ["bash", "-c", "python manage.py migrate && gunicorn AI_CashOrbit.wsgi:application --bind 0.0.0.0:${PORT:-8000}"]
+    
