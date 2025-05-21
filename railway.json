@@ -20,6 +20,10 @@
       {
         "name": "DEBUG",
         "value": "False"
+      },
+      {
+        "name": "ALLOWED_HOSTS",
+        "value": "*,.railway.app"
       }
     ]
   }
