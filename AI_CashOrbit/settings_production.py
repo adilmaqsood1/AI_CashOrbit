@@ -8,11 +8,12 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from urllib.parse import urlparse
+import dj_database_url
 
 # Override base settings for production
 DEBUG = False
 
-SECRET_KEY = 'django-insecure-h*ux4_nqet!-^w4!uewv+mw-8c+9pke^zus67(ol)0w!^+tsg9'
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-h*ux4_nqet!-^w4!uewv+mw-8c+9pke^zus67(ol)0w!^+tsg9')
 
 ALLOWED_HOSTS = ['*', '.railway.app']
 
@@ -28,16 +29,8 @@ SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 
 if DATABASE_URL := os.getenv("DATABASE_URL"):
-    tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': tmpPostgres.path.replace('/', ''),
-            'USER': tmpPostgres.username,
-            'PASSWORD': tmpPostgres.password,
-            'HOST': tmpPostgres.hostname,
-            'PORT': 5432,
-        }
+        'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
     }
 else:
     DATABASES = {
