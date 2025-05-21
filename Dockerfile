@@ -19,7 +19,7 @@ COPY . .
 RUN python manage.py collectstatic --noinput
     
 # ---- Network port for Railway ----
-EXPOSE 8000             # internal port; Railway will map $PORT→8000
+EXPOSE 8000        
     
     # ---- Start script ----
     # 1. run migrations *at runtime* (now Postgres is reachable)
