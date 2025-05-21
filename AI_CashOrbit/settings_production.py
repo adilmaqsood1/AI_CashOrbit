@@ -4,6 +4,10 @@ This file contains production-specific settings that override the base settings.
 """
 
 from .settings import *
+import os
+from pathlib import Path
+from dotenv import load_dotenv
+from urllib.parse import urlparse
 
 # Override base settings for production
 DEBUG = False
@@ -22,6 +26,27 @@ SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
+
+if DATABASE_URL := os.getenv("DATABASE_URL"):
+    tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': tmpPostgres.path.replace('/', ''),
+            'USER': tmpPostgres.username,
+            'PASSWORD': tmpPostgres.password,
+            'HOST': tmpPostgres.hostname,
+            'PORT': 5432,
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
 
 # Configure logging
 LOGGING = {
