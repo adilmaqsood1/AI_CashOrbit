@@ -4,10 +4,13 @@
     {
       "src": "AI_CashOrbit/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb" }
+      "config": { 
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.9"
+      }
     },
     {
-      "src": "package.json",
+      "src": "build_files.sh",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "staticfiles"
@@ -26,5 +29,6 @@
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "AI_CashOrbit.settings"
-  }
+  },
+  "buildCommand": "bash build_files.sh"
 }
