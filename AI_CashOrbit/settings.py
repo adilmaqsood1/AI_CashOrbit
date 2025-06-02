@@ -13,11 +13,13 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from urllib.parse import urlparse
+import dj_database_url
 
+# Load environment variables from .env file
 load_dotenv()
 
-DEBUG = False
-
+# Set DEBUG based on environment variable, default to False for production
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,11 +29,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h*ux4_nqet!-^w4!uewv+mw-8c+9pke^zus67(ol)0w!^+tsg9'
+# Use environment variable for SECRET_KEY in production, fallback to default for development
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-h*ux4_nqet!-^w4!uewv+mw-8c+9pke^zus67(ol)0w!^+tsg9')
 
 
 
-ALLOWED_HOSTS = ['*', '.railway.app']
+ALLOWED_HOSTS = ['*', '.vercel.app', '.now.sh', 'localhost', '127.0.0.1']
 
 
 
@@ -95,25 +98,18 @@ WSGI_APPLICATION = 'AI_CashOrbit.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-if DATABASE_URL := os.getenv("DATABASE_URL"):
-    tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': tmpPostgres.path.replace('/', ''),
-            'USER': tmpPostgres.username,
-            'PASSWORD': tmpPostgres.password,
-            'HOST': tmpPostgres.hostname,
-            'PORT': 5432,
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
+
+# Default to SQLite for local development
+DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-        }
     }
+}
+
+# Use DATABASE_URL environment variable if available (Vercel deployment)
+if DATABASE_URL := os.getenv('DATABASE_URL'):
+    DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 
 
 # Password validation
@@ -159,11 +155,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'login'
-
-# Security settings
-SECURE_SSL_REDIRECT = not DEBUG
-SESSION_COOKIE_SECURE = not DEBUG
-CSRF_COOKIE_SECURE = not DEBUG
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

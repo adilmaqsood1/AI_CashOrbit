@@ -1,0 +1,326 @@
+{% extends 'base.html' %}
+
+{% block footer %} {% endblock %}
+
+{% block extra_head %}
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+{% endblock %}
+
+{% block title %}Payroll - AI CashOrbit{% endblock %}
+
+{% block content %}
+ <div class="flex h-screen overflow-hidden bg-[#F4F6F8]" x-data="{mobileMenuOpen: false}">
+    <!-- Mobile Menu Overlay -->
+    <div x-show="mobileMenuOpen" @click="mobileMenuOpen = false" class="fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden transition-opacity duration-300" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+    
+    <!-- Sidebar -->
+    {% block navbar %}
+    {% include 'users/user_sidebar.html' %}
+    {% endblock navbar %}
+    
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+        <!-- Mobile Header with Menu Button -->
+        <header class="bg-white shadow-sm z-10 md:hidden sticky top-0">
+            <div class="px-4 py-3 flex items-center justify-between">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-500 focus:outline-none focus:text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition-all duration-200">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <h2 class="text-xl font-bold text-[#1C1F26]">AI <span class="text-[#2ECC71]">CashOrbit</span></h2>
+                <div class="relative">
+                    <button class="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-all duration-200">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto p-4 md:p-6 bg-[#F4F6F8] pb-16">
+            <!-- Page Header -->
+            <div class="mb-6">
+                <h1 class="text-2xl text-center font-bold text-[#1C1F26]">Payroll Management</h1>
+                <p class="text-[#6C757D] text-center">Manage employee salaries, taxes, and payments</p>
+            </div>
+            
+            <!-- Summary Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-[#2ECC71]">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-[#6C757D]">Total Payroll</p>
+                            <h3 class="text-xl font-bold text-[#1C1F26]">$24,500.00</h3>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-[#2ECC71]/20 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-[#2ECC71]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <span class="text-xs text-[#2ECC71] font-medium">+5.2% from last month</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-[#3498DB]">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-[#6C757D]">Employees</p>
+                            <h3 class="text-xl font-bold text-[#1C1F26]">18</h3>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-[#3498DB]/20 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-[#3498DB]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <span class="text-xs text-[#3498DB] font-medium">+2 new this month</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-[#9B59B6]">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-[#6C757D]">Tax Withholding</p>
+                            <h3 class="text-xl font-bold text-[#1C1F26]">$5,280.00</h3>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-[#9B59B6]/20 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-[#9B59B6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <span class="text-xs text-[#9B59B6] font-medium">21.5% of total payroll</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-[#F39C12]">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-[#6C757D]">Next Payday</p>
+                            <h3 class="text-xl font-bold text-[#1C1F26]">May 15, 2023</h3>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-[#F39C12]/20 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-[#F39C12]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <span class="text-xs text-[#F39C12] font-medium">In 8 days</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content Sections -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Employee List Section -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+                            <h2 class="text-lg font-semibold text-[#1C1F26]">Employees</h2>
+                            <button class="px-3 py-1.5 bg-[#2ECC71] text-white text-sm font-medium rounded-lg hover:bg-[#27AE60] transition-colors duration-200 flex items-center">
+                                <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                                Add Employee
+                            </button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#6C757D] uppercase tracking-wider">Employee</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#6C757D] uppercase tracking-wider">Position</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#6C757D] uppercase tracking-wider">Salary</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#6C757D] uppercase tracking-wider">Status</th>
+                                        <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-[#6C757D] uppercase tracking-wider">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <!-- Sample Employee Rows -->
+                                    <tr class="hover:bg-gray-50 transition-colors duration-200">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-[#2ECC71]/20 flex items-center justify-center text-[#2ECC71] font-bold">JD</div>
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-[#1C1F26]">John Doe</div>
+                                                    <div class="text-xs text-[#6C757D]">john.doe@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-[#1C1F26]">Senior Developer</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-[#1C1F26]">$5,500.00</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button class="text-[#2ECC71] hover:text-[#27AE60] mr-3">Edit</button>
+                                            <button class="text-[#2ECC71] hover:text-[#27AE60]">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 transition-colors duration-200">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-[#3498DB]/20 flex items-center justify-center text-[#3498DB] font-bold">JS</div>
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-[#1C1F26]">Jane Smith</div>
+                                                    <div class="text-xs text-[#6C757D]">jane.smith@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-[#1C1F26]">UX Designer</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-[#1C1F26]">$4,800.00</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button class="text-[#2ECC71] hover:text-[#27AE60] mr-3">Edit</button>
+                                            <button class="text-[#2ECC71] hover:text-[#27AE60]">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 transition-colors duration-200">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-[#9B59B6]/20 flex items-center justify-center text-[#9B59B6] font-bold">RJ</div>
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-[#1C1F26]">Robert Johnson</div>
+                                                    <div class="text-xs text-[#6C757D]">robert.j@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-[#1C1F26]">Marketing Manager</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-[#1C1F26]">$4,200.00</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button class="text-[#2ECC71] hover:text-[#27AE60] mr-3">Edit</button>
+                                            <button class="text-[#2ECC71] hover:text-[#27AE60]">View</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="px-4 py-3 border-t border-gray-200 flex items-center justify-between">
+                            <div class="text-sm text-[#6C757D]">Showing 3 of 18 employees</div>
+                            <div class="flex space-x-2">
+                                <button class="px-3 py-1 border border-gray-300 rounded-md text-sm text-[#6C757D] hover:bg-gray-50 transition-colors duration-200">Previous</button>
+                                <button class="px-3 py-1 border border-gray-300 rounded-md text-sm text-[#6C757D] hover:bg-gray-50 transition-colors duration-200">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Sections -->
+                <div class="space-y-6">
+                    <!-- Upcoming Payments -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 border-b border-gray-200">
+                            <h2 class="text-lg font-semibold text-[#1C1F26]">Upcoming Payments</h2>
+                        </div>
+                        <div class="p-4">
+                            <ul class="space-y-3">
+                                <li class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-[#1C1F26]">May 15, 2023</p>
+                                        <p class="text-xs text-[#6C757D]">Regular Payroll</p>
+                                    </div>
+                                    <span class="text-sm font-medium text-[#1C1F26]">$24,500.00</span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-[#1C1F26]">May 31, 2023</p>
+                                        <p class="text-xs text-[#6C757D]">Contractor Payments</p>
+                                    </div>
+                                    <span class="text-sm font-medium text-[#1C1F26]">$8,750.00</span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-[#1C1F26]">June 15, 2023</p>
+                                        <p class="text-xs text-[#6C757D]">Regular Payroll</p>
+                                    </div>
+                                    <span class="text-sm font-medium text-[#1C1F26]">$24,500.00</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="p-4 border-t border-gray-200">
+                            <button class="w-full px-4 py-2 bg-[#2ECC71]/10 text-[#2ECC71] text-sm font-medium rounded-lg hover:bg-[#2ECC71]/20 transition-colors duration-200">
+                                View All Payments
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 border-b border-gray-200">
+                            <h2 class="text-lg font-semibold text-[#1C1F26]">Quick Actions</h2>
+                        </div>
+                        <div class="p-4 space-y-3">
+                            <button class="w-full flex items-center justify-between px-4 py-3 bg-[#F4F6F8] rounded-lg hover:bg-[#E8F5E9] transition-colors duration-200">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-[#2ECC71]/20 flex items-center justify-center mr-3">
+                                        <svg class="w-4 h-4 text-[#2ECC71]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm font-medium text-[#1C1F26]">Run Payroll</span>
+                                </div>
+                                <svg class="w-5 h-5 text-[#6C757D]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                            
+                            <button class="w-full flex items-center justify-between px-4 py-3 bg-[#F4F6F8] rounded-lg hover:bg-[#E8F5E9] transition-colors duration-200">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-[#3498DB]/20 flex items-center justify-center mr-3">
+                                        <svg class="w-4 h-4 text-[#3498DB]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm font-medium text-[#1C1F26]">Generate Reports</span>
+                                </div>
+                                <svg class="w-5 h-5 text-[#6C757D]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                            
+                            <button class="w-full flex items-center justify-between px-4 py-3 bg-[#F4F6F8] rounded-lg hover:bg-[#E8F5E9] transition-colors duration-200">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-[#9B59B6]/20 flex items-center justify-center mr-3">
+                                        <svg class="w-4 h-4 text-[#9B59B6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm font-medium text-[#1C1F26]">Tax Documents</span>
+                                </div>
+                                <svg class="w-5 h-5 text-[#6C757D]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+ </div>
+{% endblock %}

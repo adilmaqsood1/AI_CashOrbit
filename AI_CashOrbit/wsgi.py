@@ -11,7 +11,9 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-# Directly set the settings module without using os.environ.setdefault
-os.environ['DJANGO_SETTINGS_MODULE'] = 'AI_CashOrbit.settings_production'
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'AI_CashOrbit.settings')
 
 application = get_wsgi_application()
+
+# Vercel serverless function handler
+app = application

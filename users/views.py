@@ -87,3 +87,44 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         # Get user-specific dashboard data from service layer
         context['dashboard_data'] = user_service.get_dashboard_data(self.request.user)
         return context
+
+
+class SalesView(LoginRequiredMixin, TemplateView):
+    template_name = 'users/sales.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # In a real application, you would get sales data from a service layer
+        # For now, we'll just return an empty context
+        return context
+
+
+class SettingsView(LoginRequiredMixin, TemplateView):
+    template_name = 'users/settings.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # You could add additional settings-related context here if needed
+        return context
+
+
+class ReportsView(LoginRequiredMixin, TemplateView):
+    template_name = 'users/reports.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Get report data from service layer
+        # For now, we'll just return an empty context
+        # In a real application, this would include financial report data
+        return context
+
+
+class PayrollView(LoginRequiredMixin, TemplateView):
+    template_name = 'users/payroll.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # In a real application, you would get payroll data from a service layer
+        # For now, we'll just return an empty context
+        # This would include employee data, salary information, tax calculations, etc.
+        return context

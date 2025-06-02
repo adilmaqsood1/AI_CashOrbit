@@ -1,0 +1,315 @@
+{% extends 'base.html' %}
+
+{% block footer %} {% endblock %}
+
+{% block extra_head %}
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block title %}Reports - AI CashOrbit{% endblock %}
+
+{% block content %}
+<div class="flex h-screen overflow-hidden bg-[#F4F6F8]" x-data="{mobileMenuOpen: false}">
+    <!-- Mobile Menu Overlay -->
+    <div x-show="mobileMenuOpen" @click="mobileMenuOpen = false" class="fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden transition-opacity duration-300" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+    <!-- Sidebar -->
+    {% block navbar %}
+    {% include 'users/user_sidebar.html' %}
+    {% endblock navbar %}
+    
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+        <!-- Mobile Header with Menu Button -->
+        <header class="bg-white shadow-sm z-10 md:hidden sticky top-0">
+            <div class="px-4 py-3 flex items-center justify-between">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-500 focus:outline-none focus:text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition-all duration-200">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <h2 class="text-xl font-bold text-[#1C1F26]">AI <span class="text-[#2ECC71]">CashOrbit</span></h2>
+                <div class="relative">
+                    <button class="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-all duration-200">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto p-4 md:p-6 bg-[#F4F6F8] pb-16">
+            <!-- Page Header -->
+            <div class="mb-6">
+                <h1 class="text-2xl text-center font-bold text-[#1C1F26]">Financial Reports</h1>
+                <p class="text-[#6C757D] text-center">Generate and analyze your business reports</p>
+            </div>
+            
+            <!-- Report Filters -->
+            <div class="bg-white rounded-lg shadow p-6 mb-6">
+                <h3 class="text-lg font-semibold text-[#1C1F26] mb-4">Report Filters</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Report Type -->
+                    <div>
+                        <label for="report-type" class="block text-sm font-medium text-[#6C757D] mb-1">Report Type</label>
+                        <select id="report-type" class="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-[#2ECC71] focus:border-[#2ECC71]">
+                            <option value="income-statement">Income Statement</option>
+                            <option value="balance-sheet">Balance Sheet</option>
+                            <option value="cash-flow">Cash Flow</option>
+                            <option value="tax-summary">Tax Summary</option>
+                            <option value="expense-report">Expense Report</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Date Range -->
+                    <div>
+                        <label for="date-range" class="block text-sm font-medium text-[#6C757D] mb-1">Date Range</label>
+                        <select id="date-range" class="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-[#2ECC71] focus:border-[#2ECC71]">
+                            <option value="this-month">This Month</option>
+                            <option value="last-month">Last Month</option>
+                            <option value="this-quarter">This Quarter</option>
+                            <option value="last-quarter">Last Quarter</option>
+                            <option value="this-year">This Year</option>
+                            <option value="last-year">Last Year</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Format -->
+                    <div>
+                        <label for="format" class="block text-sm font-medium text-[#6C757D] mb-1">Format</label>
+                        <select id="format" class="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-[#2ECC71] focus:border-[#2ECC71]">
+                            <option value="online">Online View</option>
+                            <option value="pdf">PDF</option>
+                            <option value="excel">Excel</option>
+                            <option value="csv">CSV</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Custom Date Range (hidden by default) -->
+                <div id="custom-date-range" class="hidden mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="start-date" class="block text-sm font-medium text-[#6C757D] mb-1">Start Date</label>
+                        <input type="date" id="start-date" class="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-[#2ECC71] focus:border-[#2ECC71]">
+                    </div>
+                    <div>
+                        <label for="end-date" class="block text-sm font-medium text-[#6C757D] mb-1">End Date</label>
+                        <input type="date" id="end-date" class="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-[#2ECC71] focus:border-[#2ECC71]">
+                    </div>
+                </div>
+                
+                <!-- Generate Button -->
+                <div class="mt-6 flex justify-end">
+                    <button class="bg-[#2ECC71] hover:bg-[#27AE60] text-white font-medium py-2 px-6 rounded-md transition-colors duration-200 flex items-center">
+                        <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                        Generate Report
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Report Preview -->
+            <div class="bg-white rounded-lg shadow p-6 mb-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-lg font-semibold text-[#1C1F26]">Income Statement</h3>
+                    <div class="text-sm text-[#6C757D]">Period: Jan 1, 2023 - Dec 31, 2023</div>
+                </div>
+                
+                <!-- Report Chart -->
+                <div class="mb-6">
+                    <canvas id="reportChart" height="300"></canvas>
+                </div>
+                
+                <!-- Report Table -->
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                                <th class="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                                <th class="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">% of Total</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <!-- Revenue Section -->
+                            <tr class="bg-gray-50">
+                                <td colspan="3" class="px-6 py-3 text-sm font-medium text-gray-900">Revenue</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-sm text-gray-500 pl-10">Sales Revenue</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">$120,000.00</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">80%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-sm text-gray-500 pl-10">Service Revenue</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">$30,000.00</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">20%</td>
+                            </tr>
+                            <tr class="bg-gray-100">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">Total Revenue</td>
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900 text-right">$150,000.00</td>
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900 text-right">100%</td>
+                            </tr>
+                            
+                            <!-- Expenses Section -->
+                            <tr class="bg-gray-50">
+                                <td colspan="3" class="px-6 py-3 text-sm font-medium text-gray-900">Expenses</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-sm text-gray-500 pl-10">Cost of Goods Sold</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">$60,000.00</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">40%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-sm text-gray-500 pl-10">Salaries & Wages</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">$45,000.00</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">30%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-sm text-gray-500 pl-10">Rent & Utilities</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">$12,000.00</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">8%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-sm text-gray-500 pl-10">Marketing & Advertising</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">$7,500.00</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">5%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-sm text-gray-500 pl-10">Other Expenses</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">$5,500.00</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-right">3.7%</td>
+                            </tr>
+                            <tr class="bg-gray-100">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">Total Expenses</td>
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900 text-right">$130,000.00</td>
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900 text-right">86.7%</td>
+                            </tr>
+                            
+                            <!-- Net Income -->
+                            <tr class="bg-[#A0F0BC]/20">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">Net Income</td>
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900 text-right">$20,000.00</td>
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900 text-right">13.3%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Saved Reports -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-lg font-semibold text-[#1C1F26] mb-4">Saved Reports</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Report Name</th>
+                                <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                                <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Range</th>
+                                <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created On</th>
+                                <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 text-sm text-gray-900">Q4 2023 Income Statement</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">Income Statement</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">Oct 1, 2023 - Dec 31, 2023</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">Jan 15, 2024</td>
+                                <td class="px-6 py-4 text-sm text-gray-500 text-center">
+                                    <div class="flex justify-center space-x-2">
+                                        <button class="text-blue-600 hover:text-blue-800">
+                                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="text-green-600 hover:text-green-800">
+                                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+    // Handle date range selection
+    document.addEventListener('DOMContentLoaded', function() {
+        const dateRangeSelect = document.getElementById('date-range');
+        const customDateRange = document.getElementById('custom-date-range');
+        
+        // Show/hide custom date range based on selection
+        dateRangeSelect.addEventListener('change', function() {
+            if (this.value === 'custom') {
+                customDateRange.classList.remove('hidden');
+            } else {
+                customDateRange.classList.add('hidden');
+            }
+        });
+        
+        // Initialize Chart.js
+        const ctx = document.getElementById('reportChart').getContext('2d');
+        const reportChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Sales Revenue', 'Service Revenue', 'Cost of Goods Sold', 'Salaries & Wages', 'Rent & Utilities', 'Marketing', 'Other Expenses'],
+                datasets: [{
+                    label: 'Amount ($)',
+                    data: [120000, 30000, 60000, 45000, 12000, 7500, 5500],
+                    backgroundColor: [
+                        'rgba(46, 204, 113, 0.6)',
+                        'rgba(46, 204, 113, 0.6)',
+                        'rgba(231, 76, 60, 0.6)',
+                        'rgba(231, 76, 60, 0.6)',
+                        'rgba(231, 76, 60, 0.6)',
+                        'rgba(231, 76, 60, 0.6)',
+                        'rgba(231, 76, 60, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(46, 204, 113, 1)',
+                        'rgba(46, 204, 113, 1)',
+                        'rgba(231, 76, 60, 1)',
+                        'rgba(231, 76, 60, 1)',
+                        'rgba(231, 76, 60, 1)',
+                        'rgba(231, 76, 60, 1)',
+                        'rgba(231, 76, 60, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return '$' + context.raw.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

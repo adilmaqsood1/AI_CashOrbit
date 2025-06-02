@@ -8,4 +8,7 @@ urlpatterns = [
     path('profile/', views.ProfileView.as_view(), name='profile'),
     path('profile/update/', views.ProfileUpdateView.as_view(), name='profile_update'),
     path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
+    path('sales/', views.SalesView.as_view(), name='sales'),
+    path('reports/', views.ReportsView.as_view(), name='reports'),
+    path('settings/', views.SettingsView.as_view(), name='settings'),
 ]

@@ -21,4 +21,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
     path('', include('landing.urls')),  # Landing page as root URL
+    path('expenses/', include('expenses.urls')),
+    path('payroll/', include('payroll.urls')),
+    path('inventory/', include('inventory.urls')),
+    path('banking/', include('banking.urls')),
+    path('ai-insights/', include('ai_insights.urls')),
+    path('invoicing/', include('invoicing.urls')),
 ]
