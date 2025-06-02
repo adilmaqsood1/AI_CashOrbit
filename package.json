@@ -1,0 +1,23 @@
+{
+  "name": "ai-cashorbit",
+  "version": "1.0.0",
+  "description": "AI CashOrbit - Financial Management System",
+  "scripts": {
+    "build": "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate"
+  },
+  "engines": {
+    "node": ">=14.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/AI_CashOrbit.git"
+  },
+  "keywords": [
+    "django",
+    "finance",
+    "accounting",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT"
+}
